@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Configuration details go here-->
+    <!--在这里写配置的细节-->
+
+    <bean id="jay" class = "com.SoundSystem_XML.Jay" />
+
+    <bean id="cdPlayer" class="com.SoundSystem_XML.CDPlayer">
+        <constructor-arg ref="jay" />
+    </bean>
+
+    <!--<bean id="cdPlayer1" class="com.SoundSystem_XML.CDPlayer"-->
+          <!--c:cd-ref="jay" />-->
+
+    <!--<bean id="cdPlayer2" class="com.SoundSystem_XML.CDPlayer"-->
+          <!--c:_0-ref="jay"/>-->
+
+    <bean id="jayZhou" class="com.SoundSystem_XML.JayZhou" >
+        <constructor-arg index="0" value="魔杰座"/>
+        <constructor-arg index="1" value="周杰伦"/>
+    </bean>
+
+    <bean id="jayZhou1" class="com.SoundSystem_XML.JayZhou" >
+        <constructor-arg value="魔杰座" />
+        <constructor-arg value="周杰伦" />
+    </bean>
+
+
+    <bean id="jayZhou2" class="com.SoundSystem_XML.JayZhou"
+          c:title="魔杰座" c:artist="周杰伦" />
+
+    <bean id="jayZhou3" class="com.SoundSystem_XML.JayZhou"
+          c:_0="魔杰座" c:_1="周杰伦" />
+
+    <!--<bean id="jayZhou4" class="com.SoundSystem_XML.JayZhou" -->
+          <!--c:_="魔杰座" />-->
+
+
+    <bean id="mayDay" class="com.SoundSystem_XML.MayDayDisc">
+        <constructor-arg value="五月天的最新专辑" />
+        <constructor-arg value="五月天" />
+        <constructor-arg><null/></constructor-arg>
+    </bean>
+
+    <bean id="mayDay1" class="com.SoundSystem_XML.MayDayDisc">
+        <constructor-arg value="五月天的新专辑" />
+        <constructor-arg value="五月天" />
+        <constructor-arg>
+            <list>
+                <value>歌曲1</value>
+                <value>歌曲2</value>
+                <value>歌曲3</value>
+                <!--等等...-->
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--<bean id="mayDay2" class="com.SoundSystem_XML.MayDayDisc">-->
+        <!--<constructor-arg value="五月天的新专辑" />-->
+        <!--<constructor-arg value="五月天" />-->
+        <!--<constructor-arg>-->
+            <!--<set>-->
+                <!--<value>歌曲1</value>-->
+                <!--<value>歌曲2</value>-->
+                <!--<value>歌曲3</value>-->
+                <!--&lt;!&ndash;等等...&ndash;&gt;-->
+            <!--</set>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
+    <bean id="discpgraphy" class="com.SoundSystem_XML.Discography">
+        <constructor-arg index="0" value="今日流行"/>
+        <constructor-arg index="1">
+            <list>
+                <ref bean="jay" />
+                <ref bean="jayZhou" />
+                <ref bean="mayDay" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+
+</beans>
