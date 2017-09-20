@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--Configuration details go here-->
     <!--在这里写配置的细节-->
 
+
+    <!--关于构造器注入Bean的实例-->
     <bean id="jay" class = "com.SoundSystem_XML.Jay" />
 
     <bean id="cdPlayer" class="com.SoundSystem_XML.CDPlayer">
@@ -18,6 +21,8 @@
     <!--<bean id="cdPlayer2" class="com.SoundSystem_XML.CDPlayer"-->
           <!--c:_0-ref="jay"/>-->
 
+
+    <!--将字面量(这里可以理解为常量)注入构造器中-->
     <bean id="jayZhou" class="com.SoundSystem_XML.JayZhou" >
         <constructor-arg index="0" value="魔杰座"/>
         <constructor-arg index="1" value="周杰伦"/>
@@ -83,5 +88,62 @@
     </bean>
 
 
+    <!--下面是关于setter注入Bean的实例-->
+    <bean id="cdPlayer3" class="com.SoundSystem_XML.CDPlayer">
+        <!--这里的property的name属性要与CDPlyer里面的数据成员的名字要保持一致-->
+        <property name="cd" ref="jay"/>
+    </bean>
+
+    <bean id="cdPlayer4" class="com.SoundSystem_XML.CDPlayer"
+          p:cd-ref="jay">
+    </bean>
+
+    <!--将字面量注入到属性中-->
+    <bean id="mayDay3" class="com.SoundSystem_XML.MayDayDisc">
+        <property name="title" value="五月天的新专辑" />
+        <property name="artist" value="五月天" />
+        <property name="tracks">
+            <list>
+                <value>歌曲1</value>
+                <value>歌曲2</value>
+                <value>歌曲3</value>
+                <value>歌曲4</value>
+                <!--等等...-->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mayDay4" class="com.SoundSystem_XML.MayDayDisc"
+          p:title="五月天的新专辑"
+          p:artist="五月天">
+        <property name="tracks">
+            <list>
+                <value>歌曲1</value>
+                <value>歌曲2</value>
+                <value>歌曲3</value>
+                <value>歌曲4</value>
+                <!--等等...-->
+            </list>
+        </property>
+    </bean>
+
+    <!--需要注意的是, 不能用p:来装配集合, -->
+    <!--但是可以使用Spring util-命名空间的一些功能来简化装配集合-->
+    <util:list id="trackList">
+        <value>歌曲1</value>
+        <value>歌曲2</value>
+        <value>歌曲3</value>
+        <value>歌曲4</value>
+        <!--等等...-->
+    </util:list>
+
+    <bean id="mayDay5" class="com.SoundSystem_XML.MayDayDisc"
+          p:title="五月天的新专辑"
+          p:artist="五月天"
+          p:tracks-ref="trackList">
+    </bean>
+
+    <!--util-list只是util-命名空间的一个元素, -->
+    <!--util-命名空间中还有很多其它元素, 比如util-map, util-set等-->
 
 </beans>
