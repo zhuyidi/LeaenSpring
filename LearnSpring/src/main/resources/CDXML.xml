@@ -9,26 +9,26 @@
 
 
     <!--关于构造器注入Bean的实例-->
-    <bean id="jay" class = "com.SoundSystem_XML.Jay" />
+    <bean id="jay" class = "AssemblingBean.SoundSystem_XML.Jay" />
 
-    <!--<bean id="cdPlayer" class="com.SoundSystem_XML.CDPlayer">-->
+    <!--<bean id="cdPlayer" claCDPlayerayer">-->
         <!--<constructor-arg ref="jay" />-->
     <!--</bean>-->
 
-    <!--<bean id="cdPlayer1" class="com.SoundSystem_XML.CDPlayer"-->
+    <!--<bean id="cdPlayer1" claCDPlayerayer"-->
           <!--c:cd-ref="jay" />-->
 
-    <!--<bean id="cdPlayer2" class="com.SoundSystem_XML.CDPlayer"-->
+    <!--<bean id="cdPlayer2" claCDPlayerayer"-->
           <!--c:_0-ref="jay"/>-->
 
 
     <!--将字面量(这里可以理解为常量)注入构造器中-->
-    <bean id="jayZhou" class="com.SoundSystem_XML.JayZhou" >
+    <bean id="jayZhou" class="AssemblingBean.SoundSystem_XML.JayZhou" >
         <constructor-arg index="0" value="魔杰座"/>
         <constructor-arg index="1" value="周杰伦"/>
     </bean>
 
-    <bean id="jayZhou1" class="com.SoundSystem_XML.JayZhou" >
+    <bean id="jayZhou1" class="AssemblingBean.SoundSystem_XML.JayZhou" >
         <constructor-arg value="魔杰座" />
         <constructor-arg value="周杰伦" />
     </bean>
@@ -37,13 +37,13 @@
           <!--c:_="魔杰座" />-->
 
 
-    <bean id="mayDay" class="com.SoundSystem_XML.MayDayDisc">
+    <bean id="mayDay" class="AssemblingBean.SoundSystem_XML.MayDayDisc">
         <constructor-arg value="五月天的最新专辑" />
         <constructor-arg value="五月天" />
         <constructor-arg><null/></constructor-arg>
     </bean>
 
-    <bean id="mayDay1" class="com.SoundSystem_XML.MayDayDisc">
+    <bean id="mayDay1" class="AssemblingBean.SoundSystem_XML.MayDayDisc">
         <constructor-arg value="五月天的新专辑" />
         <constructor-arg value="五月天" />
         <constructor-arg>
@@ -56,7 +56,7 @@
         </constructor-arg>
     </bean>
 
-    <!--<bean id="mayDay2" class="com.SoundSystem_XML.MayDayDisc">-->
+    <!--<bean id="mayDay2" claMayDayDiscDisc">-->
         <!--<constructor-arg value="五月天的新专辑" />-->
         <!--<constructor-arg value="五月天" />-->
         <!--<constructor-arg>-->
@@ -69,7 +69,7 @@
         <!--</constructor-arg>-->
     <!--</bean>-->
 
-    <bean id="discpgraphy" class="com.SoundSystem_XML.Discography">
+    <bean id="discpgraphy" class="AssemblingBean.SoundSystem_XML.Discography">
         <constructor-arg index="0" value="今日流行"/>
         <constructor-arg index="1">
             <list>
@@ -82,17 +82,17 @@
 
 
     <!--下面是关于setter注入Bean的实例-->
-    <bean id="cdPlayer3" class="com.SoundSystem_XML.CDPlayer">
+    <bean id="cdPlayer3" class="AssemblingBean.SoundSystem_XML.CDPlayer">
         <!--这里的property的name属性要与setXXX()方法里面的XXX保持一致(XXX首字母应该小写)-->
         <property name="cd" ref="jay"/>
     </bean>
 
-    <bean id="cdPlayer4" class="com.SoundSystem_XML.CDPlayer"
+    <bean id="cdPlayer4" class="AssemblingBean.SoundSystem_XML.CDPlayer"
           p:cd-ref="jay">
     </bean>
 
     <!--将字面量注入到属性中-->
-    <!--<bean id="mayDay3" class="com.SoundSystem_XML.MayDayDisc">-->
+    <!--<bean id="mayDay3" claMayDayDiscDisc">-->
         <!--<property name="title" value="五月天的新专辑" />-->
         <!--<property name="artist" value="五月天" />-->
         <!--<property name="tracks">-->
@@ -106,7 +106,7 @@
         <!--</property>-->
     <!--</bean>-->
 
-    <!--<bean id="mayDay4" class="com.SoundSystem_XML.MayDayDisc"-->
+    <!--<bean id="mayDay4" claMayDayDiscDisc"-->
           <!--p:title="五月天的新专辑"-->
           <!--p:artist="五月天">-->
         <!--<property name="tracks">-->
@@ -130,7 +130,7 @@
         <!--等等...-->
     </util:list>
 
-    <!--<bean id="mayDay5" class="com.SoundSystem_XML.MayDayDisc"-->
+    <!--<bean id="mayDay5" claMayDayDiscDisc"-->
           <!--p:title="五月天的新专辑"-->
           <!--p:artist="五月天"-->
           <!--p:tracks-ref="trackList">-->
