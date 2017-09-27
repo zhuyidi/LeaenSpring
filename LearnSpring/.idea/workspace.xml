@@ -111,11 +111,9 @@
       <file leaf-file-name="DataSourceConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedAssembly/ProfileBean/DataSourceConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="494">
+              <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1030,7 +1028,7 @@
       <workItem from="1505993715935" duration="2080000" />
       <workItem from="1506073729174" duration="8773000" />
       <workItem from="1506132940268" duration="1362000" />
-      <workItem from="1506432406866" duration="1002000" />
+      <workItem from="1506432406866" duration="2695000" />
     </task>
     <servers />
   </component>
@@ -1067,7 +1065,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116901000" />
+    <option name="totallyTimeSpent" value="118594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1442" height="901" extended-state="7" />
@@ -1499,11 +1497,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedAssembly/ProfileBean/DataSourceConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="494">
+          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

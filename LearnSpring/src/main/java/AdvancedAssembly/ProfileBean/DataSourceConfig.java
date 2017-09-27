@@ -1,10 +1,6 @@
 package AdvancedAssembly.ProfileBean;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-
-import javax.sql.DataSource;
 
 /**
  * Created by dela on 9/26/17.
@@ -12,10 +8,25 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
-    @Bean
-    public DataSource dataSource(){
-        return new EmbeddedDatabaseBuilder()
-                .addScript("classpath:schema.sql")
-                .addScript("classpath:test-data.sql").build();
-    }
+//    @Bean
+//    public DataSource dataSource(){
+//        return new EmbeddedDatabaseBuilder()
+//                .addScript("classpath:schema.sql")
+//                .addScript("classpath:test-data.sql").build();
+//    }
+
+//    @Bean
+//    public DataSource dataSource(){
+//        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+//        jndiObjectFactoryBean.setJndiName("jdbc/myDS");
+//        jndiObjectFactoryBean.setResourceRef(true);
+//        jndiObjectFactoryBean.setProxyInterface(javax.sql.DataSource.class);
+//
+//        return (DataSource)jndiObjectFactoryBean;
+//    }
+
+//    @Bean(destroyMethod = "close")
+//    public DataSource dataSource() {
+//        BasicDataSource dataSource = new BasicDataSource();
+//    }
 }
