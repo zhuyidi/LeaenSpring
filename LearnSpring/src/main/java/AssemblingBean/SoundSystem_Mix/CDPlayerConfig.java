@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ImportResource;
 //如果没有其他配置的话, @ComponentScan默认会扫描与配置类相同的包, 因为本类位于soundSystem包中, 所以Spring会扫描这个包以及这个包下所有的子包, 查找带有@Component注解的类
 @Configuration
 //@Import(CDConfig.class)
-@ImportResource("classpath:CDMix.xml")
+@ImportResource("classpath:CD/CDMix.xml")
 
 public class CDPlayerConfig {
 

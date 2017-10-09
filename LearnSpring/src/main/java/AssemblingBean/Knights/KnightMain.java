@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class KnightMain {
     public static void main(String[] args){
         ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath*:knight.xml");
+                new ClassPathXmlApplicationContext("classpath*:Knight/knight.xml");
         //获取Knight Bean
         Knight knight = (Knight) context.getBean("knight");
         //使用knight

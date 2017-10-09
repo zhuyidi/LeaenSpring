@@ -19,7 +19,7 @@ public class CDPlayerConfig {
 
 
 
-
+//
 //    @Bean
 //    public CompactDisc xin(){
 //        return new Xin();
