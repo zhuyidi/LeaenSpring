@@ -1,4 +1,6 @@
-package AssemblingBean.SoundSystem_Java;
+package AdvancedAssembly.RunTimeInjection;
+
+import AssemblingBean.SoundSystem_Java.CompactDisc;
 
 /**
  * Created by dela on 8/12/17.
