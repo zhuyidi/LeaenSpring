@@ -27,9 +27,20 @@ public class ExpressiveConfig {
 
     @Bean
     public CompactDisc jay(){
+
+        boolean titleExists = environment.containsProperty("jay.title");
+
+        Class<CompactDisc> cdClass = environment.getPropertyAsClass("disc.class", CompactDisc.class);
+
+//        return new Jay(
+//                environment.getRequiredProperty("jay.title"),
+//                environment.getRequiredProperty("jay.artist")
+//        );
+
         return new Jay(
                 environment.getProperty("jay.title", "周杰伦的专辑"),
                 environment.getProperty("jay.artist", "周杰伦")
         );
+
     }
 }

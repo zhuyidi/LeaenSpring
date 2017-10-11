@@ -1,5 +1,7 @@
 package AssemblingBean.SoundSystem_Java;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * Created by dela on 8/12/17.
  */
@@ -16,7 +18,14 @@ public class Jay implements CompactDisc {
 
     }
 
-    public Jay(String title, String artist){
+//    public Jay(String title, String artist){
+//        this.title = title;
+//        this.artist = artist;
+//    }
+
+    public Jay(
+            @Value("${jay.title}") String title,
+            @Value("${jay.artist}") String artist){
         this.title = title;
         this.artist = artist;
     }
