@@ -11,7 +11,52 @@
     <!--启用AspectJ自动代理-->
     <aop:aspectj-autoproxy />
 
-    <!--声明Audience Bean-->
-    <bean class="Concert.Audience" />
+    <!--声明Audience切面Bean-->
+    <bean id="audience" class="Concert.Audience" />
+
+    <!--声明EncoreableIntroducer切面Bean-->
+    <bean class="Concert.EncoreableIntroducer" />
+
+    <!--&lt;!&ndash;通过XML将Audience声明为一个切面&ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="audience">-->
+            <!--&lt;!&ndash;定义前置通知(表演之前)&ndash;&gt;-->
+            <!--<aop:before pointcut="execution(* Concert.Performance.perform(..))"-->
+                        <!--method="silenceCellPhone" />-->
+            <!--<aop:before pointcut="execution(* Concert.Performance.perform(..))"-->
+                        <!--method="takeSeats" />-->
+            <!--&lt;!&ndash;定义后置通知(表演之后)&ndash;&gt;-->
+            <!--<aop:after-returning pointcut="execution(* Concert.Performance.perform(..))"-->
+                                 <!--method="applause" />-->
+            <!--&lt;!&ndash;定义异常通知(表演失败之后)&ndash;&gt;-->
+            <!--<aop:after-throwing pointcut="execution(* Concert.Performance.perform(..))"-->
+                                <!--method="demandRefund" />-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--使用<aop:pointcut>元素来声明可重用的切点-->
+    <aop:config>
+        <aop:pointcut id="performance"
+                      expression="execution(* Concert.Performance.perform(..))" />
+        <aop:aspect>
+            <aop:before pointcut-ref="performance"
+                        method="silenceCellphone" />
+            <aop:before pointcut-ref="performance"
+                        method="takeSeats" />
+            <aop:after-returning pointcut-ref="performance"
+                                 method="applause" />
+            <aop:after-throwing pointcut-ref="performance"
+                                method="demandRefund" />
+        </aop:aspect>
+    </aop:config>
+
+    <!--使用<aop:around>元素声明环绕通知切面-->
+    <aop:config>
+        <aop:pointcut id="performance"
+                      expression="execution(* Concert.Performance.perform(..))" />
+        <aop:aspect>
+            <aop:around pointcut-ref="performance" method="watchPerformance" />
+        </aop:aspect>
+    </aop:config>
 
 </beans>
