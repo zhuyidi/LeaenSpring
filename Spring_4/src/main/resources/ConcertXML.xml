@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--开启自动扫描-->
     <context:component-scan base-package="Concert" />
@@ -58,5 +58,40 @@
             <aop:around pointcut-ref="performance" method="watchPerformance" />
         </aop:aspect>
     </aop:config>
+
+    <!--在XML中通过切面引入新功能-->
+    <aop:config>
+        <aop:aspect>
+            <aop:declare-parents types-matching="Concert.Performance+"
+                                 implement-interface="Concert.Encoreable"
+                                 default-impl="Concert.DefaultEncoreable" />
+        </aop:aspect>
+    </aop:config>
+
+    <!--使用<delegate-ref>属性来引用一个Bean来作为引入的委托-->
+    <bean id="encoreableDelegate" class="Concert.DefaultEncoreable" />
+    <aop:config>
+        <aop:aspect>
+            <aop:declare-parents types-matching="Concert.Performance+"
+                                 implement-interface="Concert.Encoreable"
+                                 delegate-ref="encoreableDelegate" />
+        </aop:aspect>
+    </aop:config>
+
+    <!--在XML中装配ASpectJ切面-->
+    <bean id="criticismEngine" class="Concert.CriticismEngineImpl">
+        <property name="criticismPool">
+            <list>
+                <value>个别演员的表情需要更丰富一点!</value>
+                <value>背景音乐太难听了!</value>
+                <value>演员肢体动作太僵硬!</value>
+                <value>服装太丑了!</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="Concert.CriticAspect" factory-method="aspectOf">
+        <property name="criticismEngine" ref="criticismEngine" />
+    </bean>
 
 </beans>

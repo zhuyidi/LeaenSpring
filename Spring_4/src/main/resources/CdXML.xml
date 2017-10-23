@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!--在XML中为通知传递参数    -->
     <bean id="trackCounter" class="SoundSystem.TrackCounter" />
     <bean id="cd" class="SoundSystem.MayDayDisc">
         <property name="title" value="后青春的诗" />
