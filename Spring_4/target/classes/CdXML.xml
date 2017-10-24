@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--在XML中为通知传递参数    -->
+    <bean id="trackCounter" class="SoundSystem.TrackCounter" />
+    <bean id="cd" class="SoundSystem.MayDayDisc">
+        <property name="title" value="后青春的诗" />
+        <property name="artist" value="五月天" />
+        <property name="tracks">
+            <list>
+                <value>突然好想你</value>
+                <value>你不是真正的快乐</value>
+                <value>笑忘歌</value>
+                <value>如烟</value>
+                <value>我心中尚未崩坏的地方</value>
+                <value>生存以上生活以下</value>
+            </list>
+        </property>
+    </bean>
+
+    <aop:config>
+        <aop:aspect ref="trackCounter">
+            <aop:pointcut id="trackCounter"
+                          expression="execution(* SoundSystem.CompactDisc.playTrack(int))
+                          and args(number)" />
+            <aop:before pointcut-ref="trackCounter" method="countTrack" />
+        </aop:aspect>
+    </aop:config>
+</beans>
