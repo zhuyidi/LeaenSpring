@@ -7,6 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>Spring_5 Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <!--这个pom.xml文件里面的包是标准的Spring MVC的包, 也就是说可以运行出hello Spring-->
+
   <dependencies>
     <!--测试-->
     <dependency>
