@@ -6,8 +6,19 @@
     <bean id="demo" name="/demo" class="WebXu.Demo">
         <property name="viewPage" value="/demo.html" />
     </bean>
-
+    <!--通过alias标签来为Bean提供多个名称, 而这些所有的名称都指向同一个Bean. -->
+    <!--为Bean增加别名, 时为了让应用的每一个组件能更容易的对公共组件进行引用.-->
     <alias name="/demo" alias="/demo1" />
     <alias name="/demo" alias="/demo2" />
+
+    <!--定义mapping-->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="demo.html">demo</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="interceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
 
 </beans>
