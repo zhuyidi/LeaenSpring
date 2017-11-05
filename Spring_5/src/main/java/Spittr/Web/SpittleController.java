@@ -1,7 +1,11 @@
 package Spittr.Web;
 
+import Spittr.data.SpittleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -12,9 +16,20 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 @RequestMapping("/spittles")
 public class SpittleController {
+    private SpittleRepository spittleRepository;
 
-    @RequestMapping(method = GET)
-    public String getView(){
+    @Autowired  //注入SpittleRepository
+    public SpittleController(SpittleRepository spittleRepository){
+        this.spittleRepository = spittleRepository;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    //将spittle添加到模型中
+    public String spittles(Model model){
+        model.addAttribute(spittleRepository
+                .findSpittles(Long.MAX_VALUE, 20));
+
+        //返回视图名
         return "spittles";
     }
 }
