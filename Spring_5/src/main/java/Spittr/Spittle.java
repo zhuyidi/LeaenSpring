@@ -10,19 +10,19 @@ import java.util.Date;
  * Created by dela on 11/5/17.
  */
 public class Spittle {
-    private final long id;
+    private final Long id;
     private final String message;
     private final Date time;
-    private double latitude; //纬度
-    private double longitude; //经度
+    private Double latitude; //纬度
+    private Double longitude; //经度
 
     public Spittle(String message, Date time){
         //在一个构造方法中调用另外一个构造方法用this.
-        this(message, time, null, null);
+        this(null, message, time, null, null);
     }
 
-    public Spittle(String message, Date time, Double longitude, Double latitude){
-        this.id = Long.parseLong(null);
+    public Spittle(Long id, String message, Date time, Double longitude, Double latitude){
+        this.id = id;
         this.message = message;
         this.time = time;
         this.latitude = latitude;

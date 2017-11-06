@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 //这个方法的@RequestMapping表示home()将会处理"/"路径的GET请求.
 //如果改为下面第二个@RequestMapping, 那么表明home()能映射到对"/"和"homepage"的GET请求.
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 //@RequestMapping({"/", "/homepage"})
 public class HomeController{
     @RequestMapping(method = GET)

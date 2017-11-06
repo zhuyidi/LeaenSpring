@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>zhuyidi</groupId>
-  <artifactId>Spring_55</artifactId>
+  <artifactId>Spring_5</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Spring_55 Maven Webapp</name>
+  <name>Spring_5 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -186,6 +186,23 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.4</version>
     </dependency>
+
+    <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>org.hamcrest</groupId>-->
+      <!--<artifactId>hamcrest-all</artifactId>-->
+      <!--<version>1.3</version>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+
+    <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+    <!--<dependency>-->
+      <!--<groupId>org.hamcrest</groupId>-->
+      <!--<artifactId>hamcrest-core</artifactId>-->
+      <!--<version>1.3</version>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+
 
 
 

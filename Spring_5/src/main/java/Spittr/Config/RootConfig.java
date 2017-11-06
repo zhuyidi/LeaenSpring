@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 //配置非Web组件的Bean的JavaConfig
 @Configuration
-@ComponentScan(basePackages = {"Spitter"},
+@ComponentScan(basePackages = {"Spittr"},
         excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 public class RootConfig {
 }

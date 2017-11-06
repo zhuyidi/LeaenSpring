@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  */
 
 public class HomeControllerTest {
-//    @Test
+//    @SpittleControllerTTest
 //    public void testHomePage() {
 //        HomeController controller = new HomeController();
 //        //这里仅仅是测试home()方法里面会发生什么, 也就是测试home()的返回值是不是"home", 并没有真正对"/"发起GET请求从而调用home()方法.
