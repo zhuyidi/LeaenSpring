@@ -16,8 +16,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 //最简单的Spring MVC配置就是一个带有@EnableWebMvc注解的类.
 @Configuration
 @EnableWebMvc   //启用Spring MVC
-@ComponentScan("Spitter.Web")    //启用组件扫描. 组件扫描只会对这里设置的包及其子包其作用, 如果设置的包之外就不能被扫描到
-public class WebConfig extends WebMvcConfigurerAdapter{
+@ComponentScan("Spittr.Web")    //启用组件扫描. 组件扫描只会对这里设置的包及其子包其作用, 如果设置的包之外就不能被扫描到
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     //配置JSP视图解析器
     //在viewResolver方法的上一层会调用RequestToViewNameTranslator组件的getViewName()方法得到View的名字,

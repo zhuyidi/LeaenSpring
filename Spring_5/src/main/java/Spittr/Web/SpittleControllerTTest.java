@@ -1,19 +1,19 @@
 package Spittr.Web;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.junit.Test;
 import Spittr.Spittle;
 import Spittr.data.SpittleRepository;
 import org.hamcrest.core.IsCollectionContaining;
+import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class SpittleControllerTTest {
 
