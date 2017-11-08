@@ -19,4 +19,8 @@ public class TestSpittleRespository implements SpittleRepository {
 
         return spittles;
     }
+
+    public Spittle findOne(Long spittleId) {
+        return new Spittle(new Long(2), "two", new Date(), 0.0, 0.0);
+    }
 }

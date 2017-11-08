@@ -1,11 +1,16 @@
 package Spittr.Web;
 
+import Spittr.Spittle;
 import Spittr.data.SpittleRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 
 /**
@@ -21,6 +26,7 @@ public class SpittleController {
         this.spittleRepository = spittleRepository;
     }
 
+    //第一种spittles()
 //    @RequestMapping(method = RequestMethod.GET)
 //    //将spittle添加到模型中
 //    //Model实质上就是一个Map(也就是key-value对的集合), 它会传递给视图, 这样数据就能渲染到客户端了.
@@ -35,18 +41,32 @@ public class SpittleController {
 //        return "spittles";
 //    }
 
+
+    //第二种Spittles()
     //当调用addAttribute时没有指定key的值, 那么key会根据值的对象类型推断确定.
     //在上面的spittles()方法中, 因为它是一个List<Spittle>, 因此, key将会推断为spittleList.
 
     //那么我们也可以显式声明Model(模型)的key值, 比如下面的Spittles()方法
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String spittles(Model model){
+//        model.addAttribute("spittleList",
+//                spittleRepository.findSpittles(Long.MAX_VALUE, 20));
+//
+//        return "spittles";
+//    }
+
+    //为了使后面的SpittleControllerTest能发起带有参数的GET请求, 所以重载spittles()方法.
     @RequestMapping(method = RequestMethod.GET)
-    public String spittles(Model model){
-        model.addAttribute("spittleList",
-                spittleRepository.findSpittles(Long.MAX_VALUE, 20));
+    public String spittle(@RequestParam("max") Long max,
+                                 @RequestParam("count") int count, Model model){
+        model.addAttribute("spittleList", spittleRepository.findSpittles(max, count));
 
         return "spittles";
     }
 
+
+
+    //第三种spittles()
     //如果你希望key是非String的值的话, 那么你可以用Map来代替Model(虽然在这里我们的key还是String类型的)
 //    @RequestMapping(method = RequestMethod.GET)
 //    public String spittles(Map model){
@@ -62,4 +82,10 @@ public class SpittleController {
 //    public List<Spittle> spittles(){
 //        return spittleRepository.findSpittles(Long.MAX_VALUE, 20);
 //   }
+
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    public String showSpitles(@RequestParam("spittle_id") Long spittleId, Model model){
+        model.addAttribute("spittle", spittleRepository.findOne(spittleId));
+        return "Spittle";
+    }
 }

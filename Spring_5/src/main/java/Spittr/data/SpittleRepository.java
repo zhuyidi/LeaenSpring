@@ -12,4 +12,5 @@ import java.util.List;
 public interface SpittleRepository {
     //这是一个用来获取Spittle列表的Repository
     List<Spittle> findSpittles(long max, int count);
+    Spittle findOne(Long spittleId);
 }
