@@ -1,6 +1,6 @@
 package Test;
 
-import Spittr.Spittle;
+import Spittr.Model.Spittle;
 import Spittr.Web.SpittleController;
 import Spittr.data.SpittleRepository;
 import org.junit.Test;
@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -27,6 +28,22 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 
 public class SpittleControllerTest {
+    @Test
+    public void testSpittle() throws Exception {
+        Spittle expectSpittle = new Spittle("hello", new Date());
+        SpittleRepository mockRespository = mock(SpittleRepository.class);
+        when(mockRespository.findOne((long) 12345)).thenReturn(expectSpittle);
+
+        SpittleController controller = new SpittleController(mockRespository);
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        //通过路径请求资源
+        mockMvc.perform(get("/spittles/12345"))
+                .andExpect(view().name("spittle"))
+                .andExpect(model().attributeExists("spittle"))
+                .andExpect(model().attribute("spittle", expectSpittle));
+    }
+
     @Test
     public void shouldShowPageSpitles() throws Exception {
         List<Spittle> exspectedSpittles = createSpittleList(50);

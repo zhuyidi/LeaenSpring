@@ -1,6 +1,6 @@
 package Test;
 
-import Spittr.Spittle;
+import Spittr.Model.Spittle;
 import Spittr.Web.SpittleController;
 import Spittr.data.SpittleRepository;
 import org.hamcrest.core.IsCollectionContaining;

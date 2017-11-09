@@ -1,16 +1,12 @@
 package Spittr.Web;
 
-import Spittr.Spittle;
 import Spittr.data.SpittleRepository;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 
 /**
@@ -47,22 +43,23 @@ public class SpittleController {
     //在上面的spittles()方法中, 因为它是一个List<Spittle>, 因此, key将会推断为spittleList.
 
     //那么我们也可以显式声明Model(模型)的key值, 比如下面的Spittles()方法
-//    @RequestMapping(method = RequestMethod.GET)
-//    public String spittles(Model model){
-//        model.addAttribute("spittleList",
-//                spittleRepository.findSpittles(Long.MAX_VALUE, 20));
-//
-//        return "spittles";
-//    }
-
-    //为了使后面的SpittleControllerTest能发起带有参数的GET请求, 所以重载spittles()方法.
     @RequestMapping(method = RequestMethod.GET)
-    public String spittle(@RequestParam("max") Long max,
-                                 @RequestParam("count") int count, Model model){
-        model.addAttribute("spittleList", spittleRepository.findSpittles(max, count));
+    public String spittles(Model model){
+        model.addAttribute("spittleList",
+                spittleRepository.findSpittles(Long.MAX_VALUE, 20));
 
         return "spittles";
     }
+
+    //对应到Test里的shouldShowPageSpittles
+    //为了使后面的SpittleControllerTest能发起带有参数的GET请求, 所以重载spittles()方法.
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String spittle(@RequestParam("max") Long max,
+//                          @RequestParam("count") int count, Model model){
+//        model.addAttribute("spittleList", spittleRepository.findSpittles(max, count));
+//
+//        return "spittles";
+//    }
 
 
 
@@ -83,9 +80,14 @@ public class SpittleController {
 //        return spittleRepository.findSpittles(Long.MAX_VALUE, 20);
 //   }
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public String showSpitles(@RequestParam("spittle_id") Long spittleId, Model model){
-        model.addAttribute("spittle", spittleRepository.findOne(spittleId));
-        return "Spittle";
+
+    //对应到Test里的testSpittle
+    //这个方法针对"/spittles/12345"这样的请求.
+    //spittle()方法的spittleId参数上添加了@PathVarriable("spittleId")注解,
+    //这表明在请求路径中, 不管占位符部分的值是什么都会传递到处理器方法(spittle())中的spittleId参数中.
+    @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
+    public String Spittle(@PathVariable("spittleId") long spittleId, Model model){
+        model.addAttribute(spittleRepository.findOne(spittleId));
+        return "spittle";
     }
 }
