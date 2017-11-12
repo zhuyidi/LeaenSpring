@@ -1,6 +1,6 @@
 package Spittr.Web;
 
-import Spittr.data.SpittleRepository;
+import Spittr.Dao.SpittleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
