@@ -3,7 +3,6 @@ package Spittr.Model;
 import com.sun.istack.internal.NotNull;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.SQLInsert;
 
 import javax.validation.constraints.Size;
 

@@ -1,7 +1,7 @@
 package Spittr.Web;
 
-import Spittr.Model.Spitter;
 import Spittr.Dao.SpitterRepository;
+import Spittr.Model.Spitter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
