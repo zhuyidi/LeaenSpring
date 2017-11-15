@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by dela on 11/13/17.
@@ -16,10 +17,12 @@ import java.sql.SQLException;
 @Repository
 public class JdbcSpitterRepository implements SpitterRepository {
     private JdbcOperations jdbcOperations;
-    private final static String INSERT_SPITTER = "INSERT INTO spitter (username, password, " +
-            "firstname, lastname) VALUES (?, ?, ?, ?)";
-    private final static String QUERY_SPITTER_BY_USERNAME = "SELECT * FROM spitter " +
+    private final static String INSERT_SPITTER = "INSERT INTO Spitter (username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?)";
+    private final static String QUERY_SPITTER_BY_USERNAME = "SELECT * FROM Spitter " +
             "WHERE username = ?";
+    private final static String QUERY_SPITTER_BY_ID = "SELECT * FROM Spitter " +
+            "WHERE id = ?";
+
 
     @Autowired
     public JdbcSpitterRepository(JdbcOperations jdbcOperations) {
@@ -33,9 +36,14 @@ public class JdbcSpitterRepository implements SpitterRepository {
         return spitter;
     }
 
-    public Spitter findByUsername(String username) {
-        return jdbcOperations.queryForObject(QUERY_SPITTER_BY_USERNAME,
+    public List<Spitter> findByUsername(String username) {
+        System.out.println("在findByUsername里面!");
+        return jdbcOperations.query(QUERY_SPITTER_BY_USERNAME,
                 new SpitterRowMapper(), username);
+    }
+
+    public Spitter findById(Long id) {
+        return jdbcOperations.queryForObject(QUERY_SPITTER_BY_ID, new SpitterRowMapper(), id);
     }
 
     private final static class SpitterRowMapper implements RowMapper<Spitter> {

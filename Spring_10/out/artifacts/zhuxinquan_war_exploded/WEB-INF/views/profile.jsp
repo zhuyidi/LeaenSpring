@@ -12,9 +12,11 @@
         <title>Profile</title>
     </head>
     <body>
-        <h1>Your Profile</h1>
-        <c:out value="${spitter.username}" /><br/>
-        <c:out value="${spitter.firstName}" />
-        <c:out value="${spitter.lastName}" /><br/>
+        <c:forEach items="${spitter}" var="spitter1">
+            <h1>Your Profile</h1>
+            <c:out value="${spitter1.username}" /><br/>
+            <c:out value="${spitter1.firstName}" />
+            <c:out value="${spitter1.lastName}" /><br/>
+        </c:forEach>
     </body>
 </html>
